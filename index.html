@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#657a65">
+<meta name="description" content="Undangan pernikahan Jindan Abdurrohman dan Imas Qismatul Maula.">
+<title>Jindan & Imas — Undangan Pernikahan</title>
+<style>
+:root{--sage:#667b67;--sage-dark:#405743;--sage-light:#dce4d5;--cream:#fbf7ed;--cream2:#f3ecdc;--gold:#b79a5b;--ink:#354437;--muted:#687367;--white:#fffdf8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+button,input,select,textarea{font:inherit}
+a{color:inherit}
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:12px 6%;background:rgba(68,88,69,.94);color:#fffdf8;backdrop-filter:blur(8px)}
+.brand{font-size:1rem;letter-spacing:.08em}
+.topbar a{text-decoration:none;font-size:.9rem}
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:100px 22px 55px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#fffdf7 0%,#f7f0df 56%,#dfe5d6 100%)}
+.hero:before,.hero:after{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(183,154,91,.55);border-radius:50% 50% 0 50%;transform:rotate(45deg);opacity:.55}
+.hero:before{left:-135px;top:12%}.hero:after{right:-135px;bottom:7%}
+.arch{position:absolute;inset:7% 7% 5%;border:1px solid rgba(183,154,91,.55);border-radius:48% 48% 4px 4px;pointer-events:none}
+.hero-content{max-width:740px;position:relative;z-index:1}
+.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--sage);font-family:Arial,sans-serif}
+.hero h1{font-weight:normal;font-style:italic;font-size:clamp(2.5rem,7vw,5.4rem);line-height:1.1;margin:20px 0;color:var(--sage-dark)}
+.ampersand{display:block;color:var(--gold);font-size:2rem;margin:10px}
+.hero p{max-width:540px;margin:15px auto;color:#596858}
+.date-pill{display:inline-block;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:10px 22px;margin:18px 0 24px;letter-spacing:.07em}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--sage);color:white;text-decoration:none;padding:12px 23px;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--sage-dark);transform:translateY(-1px)}
+.btn.secondary{background:transparent;color:var(--sage-dark);border:1px solid var(--sage)}
+section{padding:82px 20px}
+.container{width:min(900px,100%);margin:auto}
+.section-title{text-align:center;margin:0 auto 30px}
+.section-title .eyebrow{margin-bottom:8px}
+.section-title h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:normal;margin:0;color:var(--sage-dark)}
+.ornament{color:var(--gold);letter-spacing:.35em;margin-top:10px}
+.intro{text-align:center;background:#fffdf8}
+.arabic{font-size:clamp(1.45rem,4vw,2rem);line-height:2.1;direction:rtl;margin:20px auto;max-width:760px;color:var(--sage-dark)}
+.translation{max-width:690px;margin:auto;color:var(--muted)}
+.couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.person{padding:30px 24px;text-align:center;border:1px solid #d8c9a5;border-radius:160px 160px 14px 14px;background:linear-gradient(#fffdf8,#f6efdf)}
+.person .monogram{width:116px;height:116px;border-radius:50%;border:1px solid var(--gold);margin:0 auto 20px;display:grid;place-items:center;background:var(--sage-light);font-size:2.4rem;color:var(--sage-dark)}
+.person h3{font-weight:normal;font-size:1.45rem;margin:8px 0}
+.person p{color:var(--muted);margin:5px 0}
+.events{background:var(--sage-light)}
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--white);border:1px solid #d8c9a5;border-radius:16px;padding:25px}
+.card h3{font-weight:normal;color:var(--sage-dark);font-size:1.5rem;margin:0 0 12px}
+.detail{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.icon{color:var(--gold);font-size:1.2rem;min-width:24px}
+.countdown{background:var(--sage-dark);color:var(--white);text-align:center}
+.countdown .section-title h2,.countdown .section-title .eyebrow{color:var(--white)}
+.timer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.timebox{min-width:90px;padding:15px 13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:12px}
+.timebox strong{display:block;font-size:2rem;font-weight:normal}
+.timebox span{font-family:Arial,sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.location{background:var(--cream)}
+.map-panel{padding:28px;text-align:center;border:1px solid #d8c9a5;border-radius:16px;background:var(--white)}
+.map-panel p{color:var(--muted)}
+.gallery{background:#fffdf8}
+.gallery-note{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 20px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.photo-placeholder{min-height:170px;border:1px dashed #b8c3ad;border-radius:14px;background:linear-gradient(135deg,#edf0e5,#f8f0df);display:grid;place-items:center;text-align:center;padding:15px;color:#657562}
+.photo-placeholder span{font-size:2rem;display:block}
+.forms{background:var(--cream2)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+form{display:grid;gap:12px}
+label{font-size:.92rem}
+input,select,textarea{width:100%;padding:12px 13px;border:1px solid #d4c7a9;border-radius:9px;background:#fffdf8;color:var(--ink)}
+textarea{min-height:105px;resize:vertical}
+.small-note{font-size:.82rem;color:var(--muted)}
+.status{min-height:1.4em;font-size:.9rem;color:var(--sage-dark)}
+.gift{text-align:center;background:#fffdf8}
+.gift-box{max-width:600px;margin:auto;padding:26px;border:1px solid #d8c9a5;border-radius:16px}
+.gift-box p{color:var(--muted)}
+footer{text-align:center;padding:50px 20px;background:var(--sage-dark);color:#fffdf8}
+footer h2{font-weight:normal;font-size:2rem;font-style:italic;margin:8px}
+footer p{color:#e2e8dc}
+.float-share{position:fixed;bottom:16px;right:16px;z-index:15;box-shadow:0 4px 18px #243d2840}
+@media(max-width:680px){
+ .topbar{padding:11px 5%}.couple-grid,.event-grid,.form-grid{grid-template-columns:1fr}
+ section{padding:65px 17px}.person{border-radius:120px 120px 14px 14px}
+ .gallery-grid{grid-template-columns:1fr 1fr}.photo-placeholder{min-height:130px}
+ .arch{inset:5% 3% 4%}.hero:before,.hero:after{width:160px;height:160px}
+ .timebox{min-width:70px}.timebox strong{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+<nav class="topbar"><a class="brand" href="#home">Jindan & Imas</a><a href="#acara">Detail Acara ↓</a></nav>
+<header class="hero" id="home">
+  <div class="arch"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Undangan Pernikahan</div>
+    <p>Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud mengundang Anda untuk hadir dalam hari bahagia kami.</p>
+    <h1>Jindan Abdurrohman, S.E.<span class="ampersand">&</span>Imas Qismatul Maula</h1>
+    <div class="date-pill">9 & 16 OKTOBER 2027</div><br>
+    <a class="btn" href="#pembuka">Buka Undangan <span>↓</span></a>
+  </div>
+</header>
+<main>
+<section class="intro" id="pembuka">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow">Bismillahirrahmanirrahim</div><h2>Dengan Memohon Ridha Allah SWT</h2><div class="ornament">✦ ❧ ✦</div></div>
+  <p class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+  <p class="translation">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”<br><strong>QS. Ar-Rum: 21 (kutipan)</strong></p>
+ </div>
+</section>
+<section id="mempelai">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow">Kedua Mempelai</div><h2>Dengan Bahagia Kami Mengundang</h2><div class="ornament">✦ ❧ ✦</div></div>
+  <div class="couple-grid">
+   <article class="person"><div class="monogram">J</div><div class="eyebrow">Mempelai Pria</div><h3>Jindan Abdurrohman, S.E.</h3><p>Putra dari</p><p><strong>Bapak Ahmad Taufiq</strong><br>dan <strong>Ibu Nuraeni</strong></p></article>
+   <article class="person"><div class="monogram">I</div><div class="eyebrow">Mempelai Wanita</div><h3>Imas Qismatul Maula</h3><p>Putri dari</p><p><strong>Bapak Harsono</strong><br>dan <strong>Ibu Tuti</strong></p></article>
+  </div>
+ </div>
+</section>
+<section class="events" id="acara">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow">Mohon Doa Restu</div><h2>Waktu & Tempat</h2><div class="ornament">✦ ❧ ✦</div></div>
+  <div class="event-grid">
+   <article class="card"><h3>Akad Nikah</h3><div class="detail"><span class="icon">▦</span><div><strong>Sabtu, 9 Oktober 2027</strong></div></div><div class="detail"><span class="icon">◷</span><div>09.00 WIB</div></div><div class="detail"><span class="icon">⌖</span><div>Waladin, Pasirbungur, Purwadadi, Subang</div></div></article>
+   <article class="card"><h3>Resepsi</h3><div class="detail"><span class="icon">▦</span><div><strong>Sabtu, 16 Oktober 2027</strong></div></div><div class="detail"><span class="icon">◷</span><div>Waktu akan diinformasikan</div></div><div class="detail"><span class="icon">⌖</span><div>Waladin, Pasirbungur, Purwadadi, Subang</div></div></article>
+  </div>
+ </div>
+</section>
+<section class="countdown">
+ <div class="container"><div class="section-title"><div class="eyebrow">Menuju Hari Bahagia</div><h2>Hitung Mundur Akad Nikah</h2></div>
+  <div class="timer" aria-live="polite"><div class="timebox"><strong id="days">—</strong><span>Hari</span></div><div class="timebox"><strong id="hours">—</strong><span>Jam</span></div><div class="timebox"><strong id="minutes">—</strong><span>Menit</span></div><div class="timebox"><strong id="seconds">—</strong><span>Detik</span></div></div>
+ </div>
+</section>
+<section class="location" id="lokasi">
+ <div class="container"><div class="section-title"><div class="eyebrow">Kami Menantikan Kehadiran Anda</div><h2>Lokasi Acara</h2><div class="ornament">✦ ❧ ✦</div></div>
+ <div class="map-panel"><div style="font-size:2rem;color:var(--gold)">⌖</div><h3>Waladin</h3><p>Pasirbungur, Kecamatan Purwadadi,<br>Kabupaten Subang, Jawa Barat</p>
+ <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Waladin%2C+Pasirbungur%2C+Purwadadi%2C+Subang">Buka Google Maps ↗</a>
+ <p class="small-note">Silakan pastikan titik lokasi tepat sebelum undangan dibagikan.</p></div></div>
+</section>
+<section class="gallery" id="galeri">
+ <div class="container"><div class="section-title"><div class="eyebrow">Momen Kami</div><h2>Galeri Foto</h2><div class="ornament">✦ ❧ ✦</div></div>
+ <p class="gallery-note">Foto pasangan bisa ditambahkan nanti. Untuk menggantinya, kita akan menyiapkan folder foto saat mengunggah website.</p>
+ <div class="gallery-grid"><div class="photo-placeholder"><div><span>♡</span>Foto Jindan</div></div><div class="photo-placeholder"><div><span>♡</span>Foto Imas</div></div><div class="photo-placeholder"><div><span>✿</span>Foto Bersama</div></div></div>
+ </div>
+</section>
+<section class="forms" id="rsvp">
+ <div class="container"><div class="section-title"><div class="eyebrow">Kehadiran Anda</div><h2>RSVP & Ucapan</h2><div class="ornament">✦ ❧ ✦</div></div>
+ <div class="form-grid">
+  <div class="card"><h3>Konfirmasi Kehadiran</h3><p class="small-note">Formulir ini akan dihubungkan ke database online pada tahap berikutnya. Untuk saat ini, data belum tersimpan secara online.</p>
+   <form id="rsvpForm"><label>Nama lengkap<input id="guestName" required maxlength="100" placeholder="Nama Anda"></label><label>Konfirmasi<select id="attendance" required><option value="">Pilih jawaban</option><option>Hadir</option><option>Belum dapat memastikan</option><option>Tidak hadir</option></select></label><label>Jumlah tamu<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option></select></label><button class="btn" type="submit">Siapkan Konfirmasi</button><div class="status" id="rsvpStatus"></div></form>
+  </div>
+  <div class="card"><h3>Kirim Ucapan & Doa</h3><p class="small-note">Ucapan akan dapat disimpan dan ditampilkan setelah database online dipasang.</p>
+   <form id="wishForm"><label>Nama<input id="wishName" required maxlength="100" placeholder="Nama Anda"></label><label>Ucapan<textarea id="wishText" required maxlength="500" placeholder="Tuliskan doa terbaik untuk kedua mempelai"></textarea></label><button class="btn" type="submit">Siapkan Ucapan</button><div class="status" id="wishStatus"></div></form>
+  </div>
+ </div>
+ </div>
+</section>
+<section class="gift" id="hadiah"><div class="container"><div class="section-title"><div class="eyebrow">Tanda Kasih</div><h2>Amplop Digital</h2><div class="ornament">✦ ❧ ✦</div></div>
+ <div class="gift-box"><p>Doa restu Anda merupakan hadiah terindah bagi kami. Jika ingin berbagi tanda kasih secara digital, informasi rekening dapat ditambahkan di sini.</p><p><em>Informasi rekening belum ditambahkan.</em></p></div></div>
+</section>
+</main>
+<footer><div class="eyebrow">Terima Kasih</div><h2>Jindan & Imas</h2><p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p><p>Wassalamu’alaikum warahmatullahi wabarakatuh.</p></footer>
+<a class="btn float-share" href="#" id="shareBtn" aria-label="Bagikan undangan">Bagikan ↗</a>
+<script>
+const weddingDate = new Date("2027-10-09T09:00:00+07:00").getTime();
+function updateCountdown(){
+ const now=Date.now(), distance=weddingDate-now;
+ if(distance<=0){["days","hours","minutes","seconds"].forEach(id=>document.getElementById(id).textContent="0");return}
+ document.getElementById("days").textContent=Math.floor(distance/86400000);
+ document.getElementById("hours").textContent=Math.floor((distance%86400000)/3600000);
+ document.getElementById("minutes").textContent=Math.floor((distance%3600000)/60000);
+ document.getElementById("seconds").textContent=Math.floor((distance%60000)/1000);
+}
+updateCountdown();setInterval(updateCountdown,1000);
+document.getElementById("shareBtn").addEventListener("click",async e=>{
+ e.preventDefault();const url=location.href;const text="Undangan Pernikahan Jindan Abdurrohman & Imas Qismatul Maula";
+ if(navigator.share){try{await navigator.share({title:text,text:"Kami mengundang Anda untuk berbagi kebahagiaan bersama kami.",url})}catch(err){}}
+ else if(navigator.clipboard){try{await navigator.clipboard.writeText(url);e.currentTarget.textContent="Tautan disalin ✓";setTimeout(()=>e.currentTarget.textContent="Bagikan ↗",2500)}catch(err){prompt("Salin tautan undangan ini:",url)}}
+ else{prompt("Salin tautan undangan ini:",url)}
+});
+document.getElementById("rsvpForm").addEventListener("submit",e=>{
+ e.preventDefault();const name=document.getElementById("guestName").value.trim(), attendance=document.getElementById("attendance").value, count=document.getElementById("guestCount").value;
+ const msg=`Assalamu'alaikum, saya ${name}. Konfirmasi kehadiran: ${attendance}. Jumlah tamu: ${count}.`;
+ document.getElementById("rsvpStatus").textContent="Form siap digunakan. Penyimpanan online akan diaktifkan pada tahap Firebase.";
+ const wa="https://wa.me/?text="+encodeURIComponent(msg);
+ const link=document.createElement("a");link.href=wa;link.target="_blank";link.rel="noopener";link.textContent="Klik di sini untuk mengirim konfirmasi melalui WhatsApp";link.style.display="block";link.style.marginTop="8px";link.style.color="var(--sage-dark)";
+ const status=document.getElementById("rsvpStatus");status.appendChild(document.createElement("br"));status.appendChild(link);
+});
+document.getElementById("wishForm").addEventListener("submit",e=>{
+ e.preventDefault();const name=document.getElementById("wishName").value.trim(), wish=document.getElementById("wishText").value.trim();
+ const msg=`Ucapan untuk Jindan & Imas dari ${name}: ${wish}`;
+ const status=document.getElementById("wishStatus");status.textContent="Ucapan siap dikirim melalui WhatsApp. Penyimpanan online akan diaktifkan pada tahap Firebase.";
+ const link=document.createElement("a");link.href="https://wa.me/?text="+encodeURIComponent(msg);link.target="_blank";link.rel="noopener";link.textContent="Kirim ucapan melalui WhatsApp";link.style.display="block";link.style.marginTop="8px";link.style.color="var(--sage-dark)";status.appendChild(document.createElement("br"));status.appendChild(link);
+});
+</script>
+</body>
+</html>
