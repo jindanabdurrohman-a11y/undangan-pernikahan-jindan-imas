@@ -28,7 +28,7 @@ a{color:inherit}
 .date-pill{display:inline-block;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:10px 22px;margin:18px 0 24px;letter-spacing:.07em}
 .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--sage);color:white;text-decoration:none;padding:12px 23px;cursor:pointer;transition:.2s}
 .btn:hover{background:var(--sage-dark);transform:translateY(-1px)}
-.btn.secondary{background:transparent;color:var(--sage-dark);border:1px solid var(--sage)}
+.btn:disabled{opacity:.65;cursor:wait;transform:none}
 section{padding:82px 20px}
 .container{width:min(900px,100%);margin:auto}
 .section-title{text-align:center;margin:0 auto 30px}
@@ -45,7 +45,7 @@ section{padding:82px 20px}
 .person p{color:var(--muted);margin:5px 0}
 .events{background:var(--sage-light)}
 .event-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.card{background:var(--white);border:1px solid #d8c9a5;border-radius:16px;padding:25px}
+.card{background:var(--white);border:1px solid #d8c9a5;border-radius:16px;padding:25px;min-width:0}
 .card h3{font-weight:normal;color:var(--sage-dark);font-size:1.5rem;margin:0 0 12px}
 .detail{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
 .icon{color:var(--gold);font-size:1.2rem;min-width:24px}
@@ -71,9 +71,14 @@ input,select,textarea{width:100%;padding:12px 13px;border:1px solid #d4c7a9;bord
 textarea{min-height:105px;resize:vertical}
 .small-note{font-size:.82rem;color:var(--muted)}
 .status{min-height:1.4em;font-size:.9rem;color:var(--sage-dark)}
-.gift{text-align:center;background:#fffdf8}
-.gift-box{max-width:600px;margin:auto;padding:26px;border:1px solid #d8c9a5;border-radius:16px}
-.gift-box p{color:var(--muted)}
+.list-empty{color:var(--muted);font-size:.94rem}
+.rsvp-item,.wish-item{padding:14px 0;border-bottom:1px solid #e2d8c2;overflow-wrap:anywhere}
+.rsvp-item:last-child,.wish-item:last-child{border-bottom:0}
+.rsvp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:5px;font-family:Arial,sans-serif;font-size:.84rem}
+.badge{display:inline-block;border-radius:999px;padding:3px 9px;background:var(--sage-light);color:var(--sage-dark)}
+.badge.not-attending{background:#f2dfd9;color:#8a3a30}
+.badge.pending{background:#f4e8c8;color:#735b22}
+.list-count{font-family:Arial,sans-serif;font-size:.85rem;color:var(--muted);margin:0 0 6px}
 footer{text-align:center;padding:50px 20px;background:var(--sage-dark);color:#fffdf8}
 footer h2{font-weight:normal;font-size:2rem;font-style:italic;margin:8px}
 footer p{color:#e2e8dc}
@@ -146,13 +151,28 @@ footer p{color:#e2e8dc}
  <div class="container"><div class="section-title"><div class="eyebrow">Kehadiran Anda</div><h2>RSVP & Ucapan</h2><div class="ornament">✦ ❧ ✦</div></div>
  <div class="form-grid">
   <div class="card"><h3>Konfirmasi Kehadiran</h3><p class="small-note">Konfirmasi Anda akan disimpan secara online setelah dikirim.</p>
-   <form id="rsvpForm"><label>Nama lengkap<input id="guestName" required maxlength="100" placeholder="Nama Anda"></label><label>Konfirmasi<select id="attendance" required><option value="">Pilih jawaban</option><option>Hadir</option><option>Belum dapat memastikan</option><option>Tidak hadir</option></select></label><label>Jumlah tamu<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option></select></label><button class="btn" id="rsvpSubmit" type="submit">Kirim Konfirmasi</button><div class="status" id="rsvpStatus"></div></form>
+   <form id="rsvpForm"><label>Nama lengkap<input id="guestName" required maxlength="100" placeholder="Nama Anda"></label><label>Konfirmasi<select id="attendance" required><option value="">Pilih jawaban</option><option>Hadir</option><option>Belum dapat memastikan</option><option>Tidak hadir</option></select></label><label>Jumlah tamu<select id="guestCount"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label><button class="btn" id="rsvpSubmit" type="submit">Kirim Konfirmasi</button><div class="status" id="rsvpStatus" role="status" aria-live="polite"></div></form>
   </div>
   <div class="card"><h3>Kirim Ucapan & Doa</h3><p class="small-note">Ucapan yang dikirim akan disimpan dan ditampilkan di halaman ini.</p>
-   <form id="wishForm"><label>Nama<input id="wishName" required maxlength="100" placeholder="Nama Anda"></label><label>Ucapan<textarea id="wishText" required maxlength="500" placeholder="Tuliskan doa terbaik untuk kedua mempelai"></textarea></label><button class="btn" id="wishSubmit" type="submit">Kirim Ucapan</button><div class="status" id="wishStatus"></div></form>
+   <form id="wishForm"><label>Nama<input id="wishName" required maxlength="100" placeholder="Nama Anda"></label><label>Ucapan<textarea id="wishText" required maxlength="500" placeholder="Tuliskan doa terbaik untuk kedua mempelai"></textarea></label><button class="btn" id="wishSubmit" type="submit">Kirim Ucapan</button><div class="status" id="wishStatus" role="status" aria-live="polite"></div></form>
   </div>
  </div>
- <div class="container" style="margin-top:22px"><div class="card"><h3>Ucapan dari Tamu</h3><p class="small-note">Ucapan terbaru akan muncul di sini setelah berhasil disimpan.</p><div id="wishesList" aria-live="polite">Memuat ucapan…</div></div></div>
+
+ <div class="container" style="margin-top:22px">
+  <div class="card">
+   <h3>Daftar Konfirmasi Kehadiran</h3>
+   <p class="small-note">Konfirmasi yang dikirim tamu akan muncul di sini.</p>
+   <div id="rsvpsList" aria-live="polite">Memuat daftar konfirmasi…</div>
+  </div>
+ </div>
+
+ <div class="container" style="margin-top:22px">
+  <div class="card">
+   <h3>Ucapan dari Tamu</h3>
+   <p class="small-note">Ucapan terbaru akan muncul di sini setelah berhasil disimpan.</p>
+   <div id="wishesList" aria-live="polite">Memuat ucapan…</div>
+  </div>
+ </div>
  </div>
 </section>
 <section class="gift" id="hadiah"><div class="container"><div class="section-title"><div class="eyebrow">Tanda Kasih</div><h2>Amplop Digital</h2><div class="ornament">✦ ❧ ✦</div></div>
@@ -197,6 +217,7 @@ const rsvpForm = document.getElementById("rsvpForm");
 const wishForm = document.getElementById("wishForm");
 const rsvpStatus = document.getElementById("rsvpStatus");
 const wishStatus = document.getElementById("wishStatus");
+const rsvpsList = document.getElementById("rsvpsList");
 const wishesList = document.getElementById("wishesList");
 const rsvpSubmit = document.getElementById("rsvpSubmit");
 const wishSubmit = document.getElementById("wishSubmit");
@@ -207,95 +228,188 @@ try {
   db = getFirestore(app);
 } catch (error) {
   console.error("Firebase initialization error:", error);
-  rsvpStatus.textContent = "Layanan database belum siap. Silakan coba lagi nanti.";
-  wishStatus.textContent = "Layanan database belum siap. Silakan coba lagi nanti.";
+  setStatus(rsvpStatus, "Layanan database belum siap. Silakan coba lagi nanti.", true);
+  setStatus(wishStatus, "Layanan database belum siap. Silakan coba lagi nanti.", true);
 }
 
 function setStatus(el, message, isError = false) {
+  if (!el) return;
   el.textContent = message;
   el.style.color = isError ? "#a12b2b" : "var(--sage-dark)";
+}
+
+function explainFirestoreError(error, action) {
+  console.error(`${action} error:`, error);
+  if (error?.code === "permission-denied") {
+    return "Akses ditolak oleh aturan Firestore. Periksa Rules dan pastikan sudah menekan Publish.";
+  }
+  if (error?.code === "unavailable" || error?.code === "deadline-exceeded") {
+    return "Koneksi ke database bermasalah. Periksa internet lalu muat ulang halaman.";
+  }
+  if (error?.code === "unauthenticated") {
+    return "Sesi belum terverifikasi. Muat ulang halaman dan coba lagi.";
+  }
+  return `${action} belum berhasil. Coba muat ulang halaman; jika berulang, periksa Console browser.`;
+}
+
+if (!db) {
+  setStatus(rsvpStatus, "Database belum siap. Muat ulang halaman dan coba lagi.", true);
+  setStatus(wishStatus, "Database belum siap. Muat ulang halaman dan coba lagi.", true);
 }
 
 rsvpForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!db) { setStatus(rsvpStatus, "Database belum siap. Muat ulang halaman dan coba lagi.", true); return; }
+
   const name = document.getElementById("guestName").value.trim();
   const attendance = document.getElementById("attendance").value;
   const guestCount = Number(document.getElementById("guestCount").value);
-  if (!name || name.length > 100 || !["Hadir", "Belum dapat memastikan", "Tidak hadir"].includes(attendance) || ![1,2,3,4].includes(guestCount)) {
-    setStatus(rsvpStatus, "Periksa kembali nama, konfirmasi, dan jumlah tamu.", true); return;
+
+  if (!name || name.length > 100 ||
+      !["Hadir", "Belum dapat memastikan", "Tidak hadir"].includes(attendance) ||
+      ![1, 2, 3, 4].includes(guestCount)) {
+    setStatus(rsvpStatus, "Periksa kembali nama, konfirmasi, dan jumlah tamu.", true);
+    return;
   }
+
   rsvpSubmit.disabled = true;
   setStatus(rsvpStatus, "Menyimpan konfirmasi…");
+
   try {
-    await addDoc(collection(db, "rsvps"), { name, attendance, guestCount, createdAt: serverTimestamp() });
+    await addDoc(collection(db, "rsvps"), {
+      name,
+      attendance,
+      guestCount,
+      createdAt: serverTimestamp()
+    });
     setStatus(rsvpStatus, "Terima kasih! Konfirmasi kehadiran berhasil disimpan.");
     rsvpForm.reset();
   } catch (error) {
-    console.error("RSVP save error:", error);
-    const message = error?.code === "permission-denied"
-      ? "Penyimpanan ditolak oleh aturan Firestore. Periksa tab Rules dan pastikan aturan undangan sudah dipublikasikan."
-      : error?.code === "unavailable"
-      ? "Koneksi sedang bermasalah. Periksa internet lalu coba lagi."
-      : "Konfirmasi belum berhasil disimpan. Periksa koneksi internet dan coba lagi.";
-    setStatus(rsvpStatus, message, true);
-  } finally { rsvpSubmit.disabled = false; }
+    setStatus(rsvpStatus, explainFirestoreError(error, "Konfirmasi"));
+  } finally {
+    rsvpSubmit.disabled = false;
+  }
 });
 
 wishForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!db) { setStatus(wishStatus, "Database belum siap. Muat ulang halaman dan coba lagi.", true); return; }
+
   const name = document.getElementById("wishName").value.trim();
   const message = document.getElementById("wishText").value.trim();
+
   if (!name || name.length > 100 || !message || message.length > 500) {
-    setStatus(wishStatus, "Nama maksimal 100 karakter dan ucapan maksimal 500 karakter.", true); return;
+    setStatus(wishStatus, "Nama maksimal 100 karakter dan ucapan maksimal 500 karakter.", true);
+    return;
   }
+
   wishSubmit.disabled = true;
   setStatus(wishStatus, "Menyimpan ucapan…");
+
   try {
-    await addDoc(collection(db, "wishes"), { name, message, createdAt: serverTimestamp() });
+    await addDoc(collection(db, "wishes"), {
+      name,
+      message,
+      createdAt: serverTimestamp()
+    });
     setStatus(wishStatus, "Terima kasih! Ucapan berhasil dikirim.");
     wishForm.reset();
   } catch (error) {
-    console.error("Wish save error:", error);
-    const message = error?.code === "permission-denied"
-      ? "Penyimpanan ditolak oleh aturan Firestore. Periksa tab Rules dan pastikan aturan undangan sudah dipublikasikan."
-      : error?.code === "unavailable"
-      ? "Koneksi sedang bermasalah. Periksa internet lalu coba lagi."
-      : "Ucapan belum berhasil disimpan. Periksa koneksi internet dan coba lagi.";
-    setStatus(wishStatus, message, true);
-  } finally { wishSubmit.disabled = false; }
+    setStatus(wishStatus, explainFirestoreError(error, "Ucapan"));
+  } finally {
+    wishSubmit.disabled = false;
+  }
 });
 
 if (db) {
-  const wishesQuery = collection(db, "wishes");
-  onSnapshot(wishesQuery, (snapshot) => {
-    wishesList.replaceChildren();
+  onSnapshot(collection(db, "rsvps"), (snapshot) => {
+    rsvpsList.replaceChildren();
+
     if (snapshot.empty) {
-      wishesList.textContent = "Belum ada ucapan. Jadilah yang pertama mengirim doa!";
+      const empty = document.createElement("p");
+      empty.className = "list-empty";
+      empty.textContent = "Belum ada konfirmasi kehadiran.";
+      rsvpsList.appendChild(empty);
       return;
     }
+
+    const docs = snapshot.docs.slice().sort((a, b) => {
+      const aTime = a.data().createdAt?.toMillis?.() || 0;
+      const bTime = b.data().createdAt?.toMillis?.() || 0;
+      return bTime - aTime;
+    }).slice(0, 100);
+
+    const count = document.createElement("p");
+    count.className = "list-count";
+    count.textContent = `${docs.length} konfirmasi terbaru`;
+    rsvpsList.appendChild(count);
+
+    docs.forEach((docSnap) => {
+      const data = docSnap.data();
+      const item = document.createElement("article");
+      item.className = "rsvp-item";
+
+      const name = document.createElement("strong");
+      name.textContent = String(data.name || "Tamu").slice(0, 100);
+
+      const meta = document.createElement("div");
+      meta.className = "rsvp-meta";
+
+      const attendance = document.createElement("span");
+      attendance.className = "badge";
+      attendance.textContent = String(data.attendance || "Belum ada status");
+      if (data.attendance === "Tidak hadir") attendance.classList.add("not-attending");
+      if (data.attendance === "Belum dapat memastikan") attendance.classList.add("pending");
+
+      const guests = document.createElement("span");
+      guests.textContent = `Jumlah tamu: ${Number(data.guestCount) || 1}`;
+
+      meta.append(attendance, guests);
+      item.append(name, meta);
+      rsvpsList.appendChild(item);
+    });
+  }, (error) => {
+    rsvpsList.textContent = explainFirestoreError(error, "Daftar konfirmasi");
+  });
+
+  onSnapshot(collection(db, "wishes"), (snapshot) => {
+    wishesList.replaceChildren();
+
+    if (snapshot.empty) {
+      const empty = document.createElement("p");
+      empty.className = "list-empty";
+      empty.textContent = "Belum ada ucapan. Jadilah yang pertama mengirim doa!";
+      wishesList.appendChild(empty);
+      return;
+    }
+
     const docs = snapshot.docs.slice().sort((a, b) => {
       const aTime = a.data().createdAt?.toMillis?.() || 0;
       const bTime = b.data().createdAt?.toMillis?.() || 0;
       return bTime - aTime;
     }).slice(0, 30);
+
     docs.forEach((docSnap) => {
       const data = docSnap.data();
       const item = document.createElement("article");
-      item.style.cssText = "padding:14px 0;border-bottom:1px solid #e2d8c2;overflow-wrap:anywhere";
+      item.className = "wish-item";
+
       const name = document.createElement("strong");
-      name.textContent = String(data.name || "Tamu").slice(0,100);
+      name.textContent = String(data.name || "Tamu").slice(0, 100);
+
       const message = document.createElement("p");
       message.style.margin = "6px 0 0";
-      message.textContent = String(data.message || "").slice(0,500);
+      message.textContent = String(data.message || "").slice(0, 500);
+
       item.append(name, message);
       wishesList.appendChild(item);
     });
   }, (error) => {
-    console.error("Wish list error:", error);
-    wishesList.textContent = "Ucapan belum dapat dimuat. Silakan muat ulang halaman nanti.";
+    wishesList.textContent = explainFirestoreError(error, "Daftar ucapan");
   });
+} else {
+  rsvpsList.textContent = "Database belum siap. Muat ulang halaman nanti.";
+  wishesList.textContent = "Database belum siap. Muat ulang halaman nanti.";
 }
 </script>
 </body>
