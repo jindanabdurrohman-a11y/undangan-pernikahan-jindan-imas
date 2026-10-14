@@ -181,7 +181,7 @@ document.getElementById("shareBtn").addEventListener("click",async e=>{
 </script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDgyNcRBAmqc6-8SLqUbDI9pSZMdz44R4",
@@ -268,14 +268,19 @@ wishForm.addEventListener("submit", async (event) => {
 });
 
 if (db) {
-  const wishesQuery = query(collection(db, "wishes"), orderBy("createdAt", "desc"), limit(30));
+  const wishesQuery = collection(db, "wishes");
   onSnapshot(wishesQuery, (snapshot) => {
     wishesList.replaceChildren();
     if (snapshot.empty) {
       wishesList.textContent = "Belum ada ucapan. Jadilah yang pertama mengirim doa!";
       return;
     }
-    snapshot.forEach((docSnap) => {
+    const docs = snapshot.docs.slice().sort((a, b) => {
+      const aTime = a.data().createdAt?.toMillis?.() || 0;
+      const bTime = b.data().createdAt?.toMillis?.() || 0;
+      return bTime - aTime;
+    }).slice(0, 30);
+    docs.forEach((docSnap) => {
       const data = docSnap.data();
       const item = document.createElement("article");
       item.style.cssText = "padding:14px 0;border-bottom:1px solid #e2d8c2;overflow-wrap:anywhere";
