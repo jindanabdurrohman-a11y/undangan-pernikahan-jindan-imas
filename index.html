@@ -178,6 +178,37 @@ footer{position:relative;text-align:center;padding:68px 22px 100px;background:li
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.person,.card,.reveal,.reveal-motion .reveal{transition:none!important;animation:none!important;transform:none!important}}
 
+
+/* PENYEMPURNAAN LANJUTAN: judul mempelai tidak terlalu melebar di HP */
+@media (max-width: 600px) {
+  .hero-content { width: 100%; max-width: 100%; padding-inline: 0; }
+  .hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(1.9rem, 7.4vw, 2.65rem);
+    line-height: 1.12;
+    letter-spacing: -.035em;
+    overflow-wrap: normal;
+  }
+  .hero-name {
+    display: block;
+    width: 100%;
+    max-width: 12.5ch;
+    margin-inline: auto;
+    text-wrap: balance;
+  }
+  .hero-name:last-child { max-width: 10.5ch; }
+  .hero h1 .ampersand { margin: 7px 0; }
+  .hero p { max-width: 30ch; }
+  .date-pill { max-width: 100%; }
+}
+@media (max-width: 360px) {
+  .hero h1 { font-size: 1.82rem; }
+  .hero-name { max-width: 11.5ch; }
+  .hero-name:last-child { max-width: 9.8ch; }
+  .audio-control, .float-share { font-size: .84rem; }
+}
+
 </style>
 </head>
 <body>
