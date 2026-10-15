@@ -63,6 +63,11 @@ section{padding:82px 20px}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .photo-placeholder{min-height:170px;border:1px dashed #b8c3ad;border-radius:14px;background:linear-gradient(135deg,#edf0e5,#f8f0df);display:grid;place-items:center;text-align:center;padding:15px;color:#657562}
 .photo-placeholder span{font-size:2rem;display:block}
+.gift{background:var(--sage-light)}
+.gift-box{max-width:680px;margin:auto;padding:28px;border:1px solid #d8c9a5;border-radius:16px;background:var(--white);text-align:center}
+.gift-box p{margin:8px 0}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+::selection{background:#dce4d5;color:var(--sage-dark)}
 .forms{background:var(--cream2)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 form{display:grid;gap:12px}
@@ -79,6 +84,12 @@ textarea{min-height:105px;resize:vertical}
 .badge.not-attending{background:#f2dfd9;color:#8a3a30}
 .badge.pending{background:#f4e8c8;color:#735b22}
 .list-count{font-family:Arial,sans-serif;font-size:.85rem;color:var(--muted);margin:0 0 6px}
+.rsvp-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.summary-tile{padding:14px 10px;border:1px solid #d8c9a5;border-radius:12px;background:#fffdf8;text-align:center;min-width:0}
+.summary-tile strong{display:block;font-size:1.55rem;font-weight:normal;color:var(--sage-dark)}
+.summary-tile span{font-family:Arial,sans-serif;font-size:.76rem;color:var(--muted)}
+.entry-date{display:block;margin-top:6px;font-size:.78rem;color:var(--muted);font-family:Arial,sans-serif}
+@media(max-width:420px){.rsvp-summary{gap:6px}.summary-tile{padding:11px 5px}.summary-tile span{font-size:.68rem}.summary-tile strong{font-size:1.3rem}}
 footer{text-align:center;padding:50px 20px;background:var(--sage-dark);color:#fffdf8}
 footer h2{font-weight:normal;font-size:2rem;font-style:italic;margin:8px}
 footer p{color:#e2e8dc}
@@ -100,7 +111,7 @@ footer p{color:#e2e8dc}
     <div class="eyebrow">Undangan Pernikahan</div>
     <p>Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud mengundang Anda untuk hadir dalam hari bahagia kami.</p>
     <h1>Jindan Abdurrohman, S.E.<span class="ampersand">&</span>Imas Qismatul Maula</h1>
-    <div class="date-pill">9 & 16 OKTOBER 2027</div><br>
+    <div class="date-pill">9 &amp; 16 OKTOBER 2027</div><br>
     <a class="btn" href="#pembuka">Buka Undangan <span>↓</span></a>
   </div>
 </header>
@@ -161,7 +172,12 @@ footer p{color:#e2e8dc}
  <div class="container" style="margin-top:22px">
   <div class="card">
    <h3>Daftar Konfirmasi Kehadiran</h3>
-   <p class="small-note">Konfirmasi yang dikirim tamu akan muncul di sini.</p>
+   <p class="small-note">Ringkasan diperbarui otomatis saat tamu mengirim konfirmasi. Daftar ini dapat dilihat oleh pengunjung website.</p>
+   <div class="rsvp-summary" aria-label="Ringkasan konfirmasi kehadiran">
+    <div class="summary-tile"><strong id="rsvpTotal">—</strong><span>Konfirmasi</span></div>
+    <div class="summary-tile"><strong id="rsvpAttending">—</strong><span>Memilih hadir</span></div>
+    <div class="summary-tile"><strong id="rsvpGuestTotal">—</strong><span>Perkiraan tamu hadir</span></div>
+   </div>
    <div id="rsvpsList" aria-live="polite">Memuat daftar konfirmasi…</div>
   </div>
  </div>
@@ -176,7 +192,7 @@ footer p{color:#e2e8dc}
  </div>
 </section>
 <section class="gift" id="hadiah"><div class="container"><div class="section-title"><div class="eyebrow">Tanda Kasih</div><h2>Amplop Digital</h2><div class="ornament">✦ ❧ ✦</div></div>
- <div class="gift-box"><p>Doa restu Anda merupakan hadiah terindah bagi kami. Jika ingin berbagi tanda kasih secara digital, informasi rekening dapat ditambahkan di sini.</p><p><em>Informasi rekening belum ditambahkan.</em></p></div></div>
+ <div class="gift-box"><p>Doa restu Anda merupakan hadiah terindah bagi kami.</p><p><em>Informasi rekening belum ditambahkan.</em></p></div></div>
 </section>
 </main>
 <footer><div class="eyebrow">Terima Kasih</div><h2>Jindan & Imas</h2><p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p><p>Wassalamu’alaikum warahmatullahi wabarakatuh.</p></footer>
@@ -218,6 +234,9 @@ const wishForm = document.getElementById("wishForm");
 const rsvpStatus = document.getElementById("rsvpStatus");
 const wishStatus = document.getElementById("wishStatus");
 const rsvpsList = document.getElementById("rsvpsList");
+const rsvpTotal = document.getElementById("rsvpTotal");
+const rsvpAttending = document.getElementById("rsvpAttending");
+const rsvpGuestTotal = document.getElementById("rsvpGuestTotal");
 const wishesList = document.getElementById("wishesList");
 const rsvpSubmit = document.getElementById("rsvpSubmit");
 const wishSubmit = document.getElementById("wishSubmit");
@@ -325,6 +344,16 @@ if (db) {
   onSnapshot(collection(db, "rsvps"), (snapshot) => {
     rsvpsList.replaceChildren();
 
+    const allRsvps = snapshot.docs.map((docSnap) => docSnap.data());
+    const attendingRsvps = allRsvps.filter((data) => data.attendance === "Hadir");
+    const expectedGuests = attendingRsvps.reduce((sum, data) => {
+      const guests = Number(data.guestCount);
+      return sum + (Number.isFinite(guests) && guests >= 1 ? guests : 1);
+    }, 0);
+    rsvpTotal.textContent = String(allRsvps.length);
+    rsvpAttending.textContent = String(attendingRsvps.length);
+    rsvpGuestTotal.textContent = String(expectedGuests);
+
     if (snapshot.empty) {
       const empty = document.createElement("p");
       empty.className = "list-empty";
@@ -366,6 +395,18 @@ if (db) {
 
       meta.append(attendance, guests);
       item.append(name, meta);
+
+      const createdAt = data.createdAt?.toDate?.();
+      if (createdAt) {
+        const date = document.createElement("span");
+        date.className = "entry-date";
+        date.textContent = `Dikirim ${createdAt.toLocaleString("id-ID", {
+          dateStyle: "medium",
+          timeStyle: "short",
+          timeZone: "Asia/Jakarta"
+        })} WIB`;
+        item.appendChild(date);
+      }
       rsvpsList.appendChild(item);
     });
   }, (error) => {
@@ -402,6 +443,18 @@ if (db) {
       message.textContent = String(data.message || "").slice(0, 500);
 
       item.append(name, message);
+
+      const createdAt = data.createdAt?.toDate?.();
+      if (createdAt) {
+        const date = document.createElement("span");
+        date.className = "entry-date";
+        date.textContent = createdAt.toLocaleString("id-ID", {
+          dateStyle: "medium",
+          timeStyle: "short",
+          timeZone: "Asia/Jakarta"
+        }) + " WIB";
+        item.appendChild(date);
+      }
       wishesList.appendChild(item);
     });
   }, (error) => {
