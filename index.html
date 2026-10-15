@@ -20,12 +20,15 @@ a{color:inherit}
 .hero:before,.hero:after{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(183,154,91,.55);border-radius:50% 50% 0 50%;transform:rotate(45deg);opacity:.55}
 .hero:before{left:-135px;top:12%}.hero:after{right:-135px;bottom:7%}
 .arch{position:absolute;inset:7% 7% 5%;border:1px solid rgba(183,154,91,.55);border-radius:48% 48% 4px 4px;pointer-events:none}
-.hero-content{max-width:740px;position:relative;z-index:1}
+.hero-content{width:min(740px,100%);max-width:740px;position:relative;z-index:1;min-width:0}
+.hero-content>*{max-width:100%}
 .eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--sage);font-family:Arial,sans-serif}
-.hero h1{font-weight:normal;font-style:italic;font-size:clamp(2.5rem,7vw,5.4rem);line-height:1.1;margin:20px 0;color:var(--sage-dark)}
+.hero h1{font-weight:normal;font-style:italic;font-size:clamp(2.25rem,6.6vw,5.1rem);line-height:1.08;margin:22px auto;color:var(--sage-dark);max-width:100%;overflow-wrap:break-word}
+.hero-name{display:block;max-width:100%;text-wrap:balance}
+.hero h1 .ampersand{margin:7px 0;font-style:normal}
 .ampersand{display:block;color:var(--gold);font-size:2rem;margin:10px}
-.hero p{max-width:540px;margin:15px auto;color:#596858}
-.date-pill{display:inline-block;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:10px 22px;margin:18px 0 24px;letter-spacing:.07em}
+.hero p{max-width:540px;margin:15px auto;color:#596858;text-wrap:pretty}
+.date-pill{display:inline-block;max-width:100%;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:10px clamp(12px,4vw,22px);margin:18px 0 24px;letter-spacing:.07em;overflow-wrap:anywhere}
 .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--sage);color:white;text-decoration:none;padding:12px 23px;cursor:pointer;transition:.2s}
 .btn:hover{background:var(--sage-dark);transform:translateY(-1px)}
 .btn:disabled{opacity:.65;cursor:wait;transform:none}
@@ -107,6 +110,7 @@ textarea{min-height:105px;resize:vertical}
 @keyframes cardLift{0%{transform:translateY(0) scale(1)}45%{transform:translateY(-9px) scale(1.015)}100%{transform:translateY(-4px) scale(1)}}
 @keyframes coverFade{to{opacity:0;visibility:hidden}}
 @media(hover:hover){.person,.card,.photo-placeholder{transition:transform .35s ease,box-shadow .35s ease}.person:hover,.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #35443712}}
+@media(max-width:360px){.hero{padding-left:18px;padding-right:18px}.hero h1{font-size:1.9rem}.topbar{gap:8px}.brand{letter-spacing:.03em}.topbar a{font-size:.76rem}.date-pill{font-size:.86rem}.audio-control,.float-share{font-size:.86rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal-motion .reveal{opacity:1!important;transform:none!important}}
 
 .cover-overlay{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:linear-gradient(145deg,rgba(43,63,46,.96),rgba(75,96,72,.96));color:var(--white);text-align:center}
@@ -125,9 +129,14 @@ footer{text-align:center;padding:50px 20px;background:var(--sage-dark);color:#ff
 footer h2{font-weight:normal;font-size:2rem;font-style:italic;margin:8px}
 footer p{color:#e2e8dc}
 .float-share{position:fixed;bottom:16px;right:16px;z-index:15;box-shadow:0 4px 18px #243d2840}
+.audio-control,.float-share{max-width:calc(100vw - 32px);white-space:normal;text-align:center}
 @media(max-width:680px){
- .topbar{padding:11px 5%}.couple-grid,.event-grid,.form-grid{grid-template-columns:1fr}
+ .topbar{padding:10px 5%;gap:12px}.brand{font-size:.92rem;white-space:nowrap}.topbar a{font-size:.82rem}.couple-grid,.event-grid,.form-grid{grid-template-columns:1fr}
  section{padding:65px 17px}.person{border-radius:120px 120px 14px 14px}
+ .hero{min-height:100svh;padding:100px 24px 112px}.hero h1{font-size:clamp(2rem,8.2vw,3.15rem);line-height:1.1;margin:18px auto}.hero p{font-size:1.05rem;line-height:1.55;max-width:34ch}.eyebrow{letter-spacing:.16em}.date-pill{font-size:.95rem;letter-spacing:.045em;margin:15px 0 20px}
+ .audio-control{left:12px;right:12px;bottom:76px;width:calc(100% - 24px);padding:10px 14px;font-size:.92rem}
+ .float-share{left:12px;right:12px;bottom:12px;width:calc(100% - 24px);padding:10px 14px;font-size:.92rem}
+ .cover-overlay{padding:18px}.cover-card{padding:26px 18px}.cover-card .cover-names{font-size:clamp(1.9rem,7.5vw,2.6rem)}
  .gallery-grid{grid-template-columns:1fr 1fr}.photo-placeholder{min-height:130px}.gallery-photo{min-height:130px}
  .arch{inset:5% 3% 4%}.hero:before,.hero:after{width:160px;height:160px}
  .timebox{min-width:70px}.timebox strong{font-size:1.6rem}
@@ -158,7 +167,7 @@ footer p{color:#e2e8dc}
   <div class="hero-content">
     <div class="eyebrow">Undangan Pernikahan</div>
     <p>Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud mengundang Anda untuk hadir dalam hari bahagia kami.</p>
-    <h1>Jindan Abdurrohman, S.E.<span class="ampersand">&</span>Imas Qismatul Maula</h1>
+    <h1><span class="hero-name">Jindan Abdurrohman, S.E.</span><span class="ampersand">&amp;</span><span class="hero-name">Imas Qismatul Maula</span></h1>
     <div class="date-pill">9 &amp; 16 OKTOBER 2027</div><br>
     <a class="btn" href="#pembuka">Buka Undangan <span>↓</span></a>
   </div>
