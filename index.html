@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#657a65">
-<meta name="description" content="Undangan pernikahan Jindan Abdurrohman dan Imas Qismatul Maula.">
-<title>Jindan & Imas — Undangan Pernikahan</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#657a65" name="theme-color"/>
+<meta content="Undangan pernikahan Jindan Abdurrohman dan Imas Qismatul Maula." name="description"/>
+<title>Jindan &amp; Imas — Undangan Pernikahan</title>
 <style>
 :root{--sage:#667b67;--sage-dark:#405743;--sage-light:#dce4d5;--cream:#fbf7ed;--cream2:#f3ecdc;--gold:#b79a5b;--ink:#354437;--muted:#687367;--white:#fffdf8}
 *{box-sizing:border-box}
@@ -209,128 +210,140 @@ footer{position:relative;text-align:center;padding:68px 22px 100px;background:li
   .audio-control, .float-share { font-size: .84rem; }
 }
 
+
+/* Urutan dan komponen tambahan sesuai susunan undangan yang diminta */
+.couple-photo-section,.share-section,.music-section,.wishes-section{background:#fffdf8;text-align:center}
+.couple-photo-placeholder{width:min(420px,100%);min-height:280px;margin:auto;border:1px dashed #b6a06c;border-radius:180px 180px 16px 16px;background:linear-gradient(145deg,#e2e8d9,#fff8e9);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#667b67;padding:24px}
+.couple-photo-placeholder span{font-size:3rem;line-height:1}
+.couple-photo-placeholder p{margin:12px 0 0}
+.share-button,.music-button{min-width:min(260px,100%);margin:8px auto}
+.music-section{background:#e0e5d5}
+.wishes-section .form-grid{max-width:680px;margin:auto}
+.wishes-section .card{width:100%;text-align:left}
+@media(max-width:680px){
+ .couple-photo-placeholder{min-height:230px}
+ .share-button,.music-button{width:100%;max-width:360px}
+}
 </style>
 </head>
 <body>
 <!-- HALAMAN PEMBUKA. Nama tamu dapat diatur lewat tautan ?to=Nama%20Tamu -->
 <div class="cover-overlay" id="coverOverlay">
- <div class="cover-card">
-  <div class="envelope-visual" aria-hidden="true">
-   <div class="envelope-back"></div>
-   <div class="envelope-letter">J <span style="font-size:.9rem;color:var(--gold)">&amp;</span> I</div>
-   <div class="envelope-flap"></div>
-   <div class="envelope-pocket"></div>
-  </div>
-  <div class="eyebrow">Undangan Pernikahan</div>
-  <div class="cover-names">Jindan <span style="color:var(--gold)">&amp;</span> Imas</div>
-  <p>Dengan penuh rasa syukur, kami mengundang Anda untuk hadir pada hari bahagia kami.</p>
-  <div class="cover-to"><span class="small-note">Kepada Yth.</span><br><strong id="guestGreeting">Bapak/Ibu/Saudara/i</strong></div>
-  <p class="small-note">Sabtu, 9 dan 16 Oktober 2027</p>
-  <button class="btn" id="openInvitationBtn" type="button">Buka Undangan ✦</button>
- </div>
+<div class="cover-card">
+<div aria-hidden="true" class="envelope-visual">
+<div class="envelope-back"></div>
+<div class="envelope-letter">J <span style="font-size:.9rem;color:var(--gold)">&amp;</span> I</div>
+<div class="envelope-flap"></div>
+<div class="envelope-pocket"></div>
 </div>
-<nav class="topbar"><a class="brand" href="#home">Jindan & Imas</a><a href="#acara">Detail Acara ↓</a></nav>
+<div class="eyebrow">Undangan Pernikahan</div>
+<div class="cover-names">Jindan <span style="color:var(--gold)">&amp;</span> Imas</div>
+<p>Dengan penuh rasa syukur, kami mengundang Anda untuk hadir pada hari bahagia kami.</p>
+<div class="cover-to"><span class="small-note">Kepada Yth.</span><br/><strong id="guestGreeting">Bapak/Ibu/Saudara/i</strong></div>
+<p class="small-note">Sabtu, 9 dan 16 Oktober 2027</p>
+<button class="btn" id="openInvitationBtn" type="button">Buka Undangan ✦</button>
+</div>
+</div>
+<nav class="topbar"><a class="brand" href="#home">Jindan &amp; Imas</a><a href="#acara">Detail Acara ↓</a></nav>
 <header class="hero" id="home">
-  <div class="arch"></div>
-  <div class="hero-content">
-    <div class="eyebrow">Undangan Pernikahan</div>
-    <p>Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud mengundang Anda untuk hadir dalam hari bahagia kami.</p>
-    <h1><span class="hero-name">Jindan Abdurrohman, S.E.</span><span class="ampersand">&amp;</span><span class="hero-name">Imas Qismatul Maula</span></h1>
-    <div class="date-pill">9 &amp; 16 OKTOBER 2027</div><br>
-    <a class="btn" href="#pembuka">Buka Undangan <span>↓</span></a>
-  </div>
+<div class="arch"></div>
+<div class="hero-content">
+<div class="eyebrow">Undangan Pernikahan</div>
+<p>Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud mengundang Anda untuk hadir dalam hari bahagia kami.</p>
+<h1><span class="hero-name">Jindan Abdurrohman, S.E.</span><span class="ampersand">&amp;</span><span class="hero-name">Imas Qismatul Maula</span></h1>
+<div class="date-pill">9 &amp; 16 OKTOBER 2027</div><br/>
+<a class="btn" href="#pembuka">Buka Undangan <span>↓</span></a>
+</div>
 </header>
 <main>
-<section class="intro" id="pembuka">
- <div class="container">
-  <div class="section-title"><div class="eyebrow">Bismillahirrahmanirrahim</div><h2>Dengan Memohon Ridha Allah SWT</h2><div class="ornament">✦ ❧ ✦</div></div>
-  <p class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
-  <p class="translation">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”<br><strong>QS. Ar-Rum: 21 (kutipan)</strong></p>
- </div>
-</section>
-<section id="mempelai">
- <div class="container">
-  <div class="section-title"><div class="eyebrow">Kedua Mempelai</div><h2>Dengan Bahagia Kami Mengundang</h2><div class="ornament">✦ ❧ ✦</div></div>
-  <div class="couple-grid">
-   <article class="person"><div class="monogram">J</div><div class="eyebrow">Mempelai Pria</div><h3>Jindan Abdurrohman, S.E.</h3><p>Putra dari</p><p><strong>Bapak Ahmad Taufiq</strong><br>dan <strong>Ibu Nuraeni</strong></p></article>
-   <article class="person"><div class="monogram">I</div><div class="eyebrow">Mempelai Wanita</div><h3>Imas Qismatul Maula</h3><p>Putri dari</p><p><strong>Bapak Harsono</strong><br>dan <strong>Ibu Tuti</strong></p></article>
-  </div>
- </div>
-</section>
-<section class="events" id="acara">
- <div class="container">
-  <div class="section-title"><div class="eyebrow">Mohon Doa Restu</div><h2>Waktu & Tempat</h2><div class="ornament">✦ ❧ ✦</div></div>
-  <div class="event-grid">
-   <article class="card"><h3>Akad Nikah</h3><div class="detail"><span class="icon">▦</span><div><strong>Sabtu, 9 Oktober 2027</strong></div></div><div class="detail"><span class="icon">◷</span><div>09.00 WIB</div></div><div class="detail"><span class="icon">⌖</span><div>Waladin, Pasirbungur, Purwadadi, Subang</div></div></article>
-   <article class="card"><h3>Resepsi</h3><div class="detail"><span class="icon">▦</span><div><strong>Sabtu, 16 Oktober 2027</strong></div></div><div class="detail"><span class="icon">◷</span><div>Waktu akan diinformasikan</div></div><div class="detail"><span class="icon">⌖</span><div>Waladin, Pasirbungur, Purwadadi, Subang</div></div></article>
-  </div>
- </div>
-</section>
-<section class="countdown">
- <div class="container"><div class="section-title"><div class="eyebrow">Menuju Hari Bahagia</div><h2>Hitung Mundur Acara</h2></div>
-  <div class="countdown-pair">
-   <div class="countdown-block"><h3>Akad Nikah · 9 Oktober 2027, 09.00 WIB</h3><div class="timer" aria-live="polite"><div class="timebox"><strong id="days">—</strong><span>Hari</span></div><div class="timebox"><strong id="hours">—</strong><span>Jam</span></div><div class="timebox"><strong id="minutes">—</strong><span>Menit</span></div><div class="timebox"><strong id="seconds">—</strong><span>Detik</span></div></div></div>
-   <div class="countdown-block"><h3>Resepsi · 16 Oktober 2027</h3><p class="small-note" style="color:#e2e8dc">Waktu resepsi belum ditentukan; hitung mundur ini menuju awal tanggal acara (00.00 WIB).</p><div class="timer" aria-live="polite"><div class="timebox"><strong id="receptionDays">—</strong><span>Hari</span></div><div class="timebox"><strong id="receptionHours">—</strong><span>Jam</span></div><div class="timebox"><strong id="receptionMinutes">—</strong><span>Menit</span></div><div class="timebox"><strong id="receptionSeconds">—</strong><span>Detik</span></div></div></div>
-  </div>
- </div>
-</section>
-<section class="location" id="lokasi">
- <div class="container"><div class="section-title"><div class="eyebrow">Kami Menantikan Kehadiran Anda</div><h2>Lokasi Acara</h2><div class="ornament">✦ ❧ ✦</div></div>
- <div class="map-panel"><div style="font-size:2rem;color:var(--gold)">⌖</div><h3>Waladin</h3><p>Pasirbungur, Kecamatan Purwadadi,<br>Kabupaten Subang, Jawa Barat</p>
- <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Waladin%2C+Pasirbungur%2C+Purwadadi%2C+Subang">Buka Google Maps ↗</a>
- <p class="small-note">Silakan pastikan titik lokasi tepat sebelum undangan dibagikan.</p></div></div>
-</section>
-<section class="gallery" id="galeri">
- <div class="container"><div class="section-title"><div class="eyebrow">Momen Kami</div><h2>Galeri Foto</h2><div class="ornament">✦ ❧ ✦</div></div>
- <p class="gallery-note">Tempat foto sudah disiapkan. Ganti URL placeholder pada kode dengan tautan foto milik kalian agar foto tampil. Belum ada URL foto yang ditambahkan.</p>
- <div class="gallery-grid">
-  <div class="photo-placeholder" id="photoSlot1"><div><span>♡</span>Foto Jindan<br><small>PLACEHOLDER: URL foto belum ditambahkan</small></div></div>
-  <div class="photo-placeholder" id="photoSlot2"><div><span>♡</span>Foto Imas<br><small>PLACEHOLDER: URL foto belum ditambahkan</small></div></div>
-  <div class="photo-placeholder" id="photoSlot3"><div><span>✿</span>Foto Bersama<br><small>PLACEHOLDER: URL foto belum ditambahkan</small></div></div>
- </div>
- </div>
-</section>
-<section class="forms" id="rsvp">
- <div class="container"><div class="section-title"><div class="eyebrow">Kehadiran Anda</div><h2>RSVP & Ucapan</h2><div class="ornament">✦ ❧ ✦</div></div>
- <div class="form-grid">
-  <div class="card"><h3>Konfirmasi Kehadiran</h3><p class="small-note">Konfirmasi Anda akan disimpan secara online setelah dikirim.</p>
-   <form id="rsvpForm"><label>Nama lengkap<input id="guestName" required maxlength="100" placeholder="Nama Anda"></label><label>Konfirmasi<select id="attendance" required><option value="">Pilih jawaban</option><option>Hadir</option><option>Belum dapat memastikan</option><option>Tidak hadir</option></select></label><label>Jumlah tamu<select id="guestCount"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label><button class="btn" id="rsvpSubmit" type="submit">Kirim Konfirmasi</button><div class="status" id="rsvpStatus" role="status" aria-live="polite"></div></form>
-  </div>
-  <div class="card"><h3>Kirim Ucapan & Doa</h3><p class="small-note">Ucapan yang dikirim akan disimpan dan ditampilkan di halaman ini.</p>
-   <form id="wishForm"><label>Nama<input id="wishName" required maxlength="100" placeholder="Nama Anda"></label><label>Ucapan<textarea id="wishText" required maxlength="500" placeholder="Tuliskan doa terbaik untuk kedua mempelai"></textarea></label><button class="btn" id="wishSubmit" type="submit">Kirim Ucapan</button><div class="status" id="wishStatus" role="status" aria-live="polite"></div></form>
-  </div>
- </div>
 
- <div class="container" style="margin-top:22px">
-  <div class="card">
-   <h3>Daftar Konfirmasi Kehadiran</h3>
-   <p class="small-note">Ringkasan diperbarui otomatis saat tamu mengirim konfirmasi. Daftar ini dapat dilihat oleh pengunjung website.</p>
-   <div class="rsvp-summary" aria-label="Ringkasan konfirmasi kehadiran">
-    <div class="summary-tile"><strong id="rsvpTotal">—</strong><span>Konfirmasi</span></div>
-    <div class="summary-tile"><strong id="rsvpAttending">—</strong><span>Memilih hadir</span></div>
-    <div class="summary-tile"><strong id="rsvpGuestTotal">—</strong><span>Perkiraan tamu hadir</span></div>
-   </div>
-   <div id="rsvpsList" aria-live="polite">Memuat daftar konfirmasi…</div>
-  </div>
- </div>
 
- <div class="container" style="margin-top:22px">
-  <div class="card">
-   <h3>Ucapan dari Tamu</h3>
-   <p class="small-note">Ucapan terbaru akan muncul di sini setelah berhasil disimpan.</p>
-   <div id="wishesList" aria-live="polite">Memuat ucapan…</div>
-  </div>
- </div>
- </div>
-</section>
-<section class="gift" id="hadiah"><div class="container"><div class="section-title"><div class="eyebrow">Tanda Kasih</div><h2>Amplop Digital</h2><div class="ornament">✦ ❧ ✦</div></div>
- <div class="gift-box"><p>Doa restu Anda merupakan hadiah terindah bagi kami.</p><p><em>Informasi rekening belum ditambahkan.</em></p></div></div>
-</section>
-</main>
-<footer><div class="eyebrow">Terima Kasih</div><h2>Jindan & Imas</h2><p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p><p>Wassalamu’alaikum warahmatullahi wabarakatuh.</p></footer>
-<a class="btn float-share" id="shareBtn" href="https://wa.me/?text=Undangan%20Pernikahan%20Jindan%20%26%20Imas" target="_blank" rel="noopener" aria-label="Bagikan undangan melalui WhatsApp">Bagikan WhatsApp ↗</a>
-<button class="btn audio-control" id="musicToggle" type="button" aria-pressed="false">♫ Musik belum diatur</button>
-<audio id="bgMusic" loop preload="none"></audio>
+
+
+
+
+
+
+<section class="couple-photo-section" id="foto-pasangan"><div class="container"><div class="section-title"><div class="eyebrow">Momen Berdua</div><h2>Foto Pasangan</h2><div class="ornament">✦ ❧ ✦</div></div><p class="gallery-note">Foto pasangan akan ditampilkan di sini setelah foto asli ditambahkan.</p><div class="couple-photo-placeholder"><span>♡</span><p>Foto Jindan &amp; Imas</p></div></div></section><section class="intro" id="pembuka">
+<div class="container">
+<div class="section-title"><div class="eyebrow">Bismillahirrahmanirrahim</div><h2>Dengan Memohon Ridha Allah SWT</h2><div class="ornament">✦ ❧ ✦</div></div>
+<p class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+<p class="translation">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”<br/><strong>QS. Ar-Rum: 21 (kutipan)</strong></p>
+</div>
+</section><section id="mempelai">
+<div class="container">
+<div class="section-title"><div class="eyebrow">Kedua Mempelai</div><h2>Dengan Bahagia Kami Mengundang</h2><div class="ornament">✦ ❧ ✦</div></div>
+<div class="couple-grid">
+<article class="person"><div class="monogram">J</div><div class="eyebrow">Mempelai Pria</div><h3>Jindan Abdurrohman, S.E.</h3><p>Putra dari</p><p><strong>Bapak Ahmad Taufiq</strong><br/>dan <strong>Ibu Nuraeni</strong></p></article>
+<article class="person"><div class="monogram">I</div><div class="eyebrow">Mempelai Wanita</div><h3>Imas Qismatul Maula</h3><p>Putri dari</p><p><strong>Bapak Harsono</strong><br/>dan <strong>Ibu Tuti</strong></p></article>
+</div>
+</div>
+</section><section class="events" id="acara">
+<div class="container">
+<div class="section-title"><div class="eyebrow">Mohon Doa Restu</div><h2>Waktu &amp; Tempat</h2><div class="ornament">✦ ❧ ✦</div></div>
+<div class="event-grid">
+<article class="card"><h3>Akad Nikah</h3><div class="detail"><span class="icon">▦</span><div><strong>Sabtu, 9 Oktober 2027</strong></div></div><div class="detail"><span class="icon">◷</span><div>09.00 WIB</div></div><div class="detail"><span class="icon">⌖</span><div>Waladin, Pasirbungur, Purwadadi, Subang</div></div></article>
+<article class="card"><h3>Resepsi</h3><div class="detail"><span class="icon">▦</span><div><strong>Sabtu, 16 Oktober 2027</strong></div></div><div class="detail"><span class="icon">◷</span><div>Waktu akan diinformasikan</div></div><div class="detail"><span class="icon">⌖</span><div>Waladin, Pasirbungur, Purwadadi, Subang</div></div></article>
+</div>
+</div>
+</section><section class="location" id="lokasi">
+<div class="container"><div class="section-title"><div class="eyebrow">Kami Menantikan Kehadiran Anda</div><h2>Lokasi Acara</h2><div class="ornament">✦ ❧ ✦</div></div>
+<div class="map-panel"><div style="font-size:2rem;color:var(--gold)">⌖</div><h3>Waladin</h3><p>Pasirbungur, Kecamatan Purwadadi,<br/>Kabupaten Subang, Jawa Barat</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Waladin%2C+Pasirbungur%2C+Purwadadi%2C+Subang" rel="noopener" target="_blank">Buka Google Maps ↗</a>
+<p class="small-note">Silakan pastikan titik lokasi tepat sebelum undangan dibagikan.</p></div></div>
+</section><section class="countdown">
+<div class="container"><div class="section-title"><div class="eyebrow">Menuju Hari Bahagia</div><h2>Hitung Mundur Acara</h2></div>
+<div class="countdown-pair">
+<div class="countdown-block"><h3>Akad Nikah · 9 Oktober 2027, 09.00 WIB</h3><div aria-live="polite" class="timer"><div class="timebox"><strong id="days">—</strong><span>Hari</span></div><div class="timebox"><strong id="hours">—</strong><span>Jam</span></div><div class="timebox"><strong id="minutes">—</strong><span>Menit</span></div><div class="timebox"><strong id="seconds">—</strong><span>Detik</span></div></div></div>
+<div class="countdown-block"><h3>Resepsi · 16 Oktober 2027</h3><p class="small-note" style="color:#e2e8dc">Waktu resepsi belum ditentukan; hitung mundur ini menuju awal tanggal acara (00.00 WIB).</p><div aria-live="polite" class="timer"><div class="timebox"><strong id="receptionDays">—</strong><span>Hari</span></div><div class="timebox"><strong id="receptionHours">—</strong><span>Jam</span></div><div class="timebox"><strong id="receptionMinutes">—</strong><span>Menit</span></div><div class="timebox"><strong id="receptionSeconds">—</strong><span>Detik</span></div></div></div>
+</div>
+</div>
+</section><section class="forms" id="rsvp">
+<div class="container"><div class="section-title"><div class="eyebrow">Kehadiran Anda</div><h2>Konfirmasi Kehadiran</h2><div class="ornament">✦ ❧ ✦</div></div>
+<div class="form-grid">
+<div class="card"><h3>Konfirmasi Kehadiran</h3><p class="small-note">Konfirmasi Anda akan disimpan secara online setelah dikirim.</p>
+<form id="rsvpForm"><label>Nama lengkap<input id="guestName" maxlength="100" placeholder="Nama Anda" required=""/></label><label>Konfirmasi<select id="attendance" required=""><option value="">Pilih jawaban</option><option>Hadir</option><option>Belum dapat memastikan</option><option>Tidak hadir</option></select></label><label>Jumlah tamu<select id="guestCount"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label><button class="btn" id="rsvpSubmit" type="submit">Kirim Konfirmasi</button><div aria-live="polite" class="status" id="rsvpStatus" role="status"></div></form>
+</div>
+
+</div>
+<div class="container" style="margin-top:22px">
+<div class="card">
+<h3>Daftar Konfirmasi Kehadiran</h3>
+<p class="small-note">Ringkasan diperbarui otomatis saat tamu mengirim konfirmasi. Daftar ini dapat dilihat oleh pengunjung website.</p>
+<div aria-label="Ringkasan konfirmasi kehadiran" class="rsvp-summary">
+<div class="summary-tile"><strong id="rsvpTotal">—</strong><span>Konfirmasi</span></div>
+<div class="summary-tile"><strong id="rsvpAttending">—</strong><span>Memilih hadir</span></div>
+<div class="summary-tile"><strong id="rsvpGuestTotal">—</strong><span>Perkiraan tamu hadir</span></div>
+</div>
+<div aria-live="polite" id="rsvpsList">Memuat daftar konfirmasi…</div>
+</div>
+</div>
+<div class="container" style="margin-top:22px">
+
+</div>
+</div>
+</section><section class="gift" id="hadiah"><div class="container"><div class="section-title"><div class="eyebrow">Tanda Kasih</div><h2>Amplop Digital</h2><div class="ornament">✦ ❧ ✦</div></div>
+<div class="gift-box"><p>Doa restu Anda merupakan hadiah terindah bagi kami.</p><p><em>Informasi rekening belum ditambahkan.</em></p></div></div>
+</section><section class="share-section" id="bagikan-undangan"><div class="container"><div class="section-title"><div class="eyebrow">Sebarkan Kabar Bahagia</div><h2>Bagikan Undangan</h2><div class="ornament">✦ ❧ ✦</div></div><p>Bagikan tautan undangan kepada keluarga dan sahabat melalui WhatsApp.</p><a aria-label="Bagikan undangan melalui WhatsApp" class="btn share-button" href="https://wa.me/?text=Undangan%20Pernikahan%20Jindan%20%26%20Imas" id="shareBtn" rel="noopener" style="" target="_blank">Bagikan WhatsApp ↗</a></div></section><section class="music-section" id="musik"><div class="container"><div class="section-title"><div class="eyebrow">Suasana Hari Bahagia</div><h2>Musik Latar</h2><div class="ornament">✦ ❧ ✦</div></div><p>Musik dapat diputar jika tautan audio sudah ditambahkan.</p><button aria-pressed="false" class="btn music-button" id="musicToggle" style="" type="button">♫ Musik belum diatur</button><audio id="bgMusic" loop="" preload="none"></audio></div></section><section class="gallery" id="galeri">
+<div class="container"><div class="section-title"><div class="eyebrow">Momen Kami</div><h2>Galeri Foto</h2><div class="ornament">✦ ❧ ✦</div></div>
+<p class="gallery-note">Tempat foto sudah disiapkan. Ganti URL placeholder pada kode dengan tautan foto milik kalian agar foto tampil. Belum ada URL foto yang ditambahkan.</p>
+<div class="gallery-grid">
+<div class="photo-placeholder" id="photoSlot1"><div><span>♡</span>Foto Jindan<br/><small>PLACEHOLDER: URL foto belum ditambahkan</small></div></div>
+<div class="photo-placeholder" id="photoSlot2"><div><span>♡</span>Foto Imas<br/><small>PLACEHOLDER: URL foto belum ditambahkan</small></div></div>
+<div class="photo-placeholder" id="photoSlot3"><div><span>✿</span>Foto Bersama<br/><small>PLACEHOLDER: URL foto belum ditambahkan</small></div></div>
+</div>
+</div>
+</section><section class="wishes-section" id="ucapan-doa"><div class="container"><div class="section-title"><div class="eyebrow">Doa untuk Kedua Mempelai</div><h2>Ucapan dan Doa</h2><div class="ornament">✦ ❧ ✦</div></div><div class="form-grid"><div class="card"><h3>Kirim Ucapan &amp; Doa</h3><p class="small-note">Ucapan yang dikirim akan disimpan dan ditampilkan di halaman ini.</p>
+<form id="wishForm"><label>Nama<input id="wishName" maxlength="100" placeholder="Nama Anda" required=""/></label><label>Ucapan<textarea id="wishText" maxlength="500" placeholder="Tuliskan doa terbaik untuk kedua mempelai" required=""></textarea></label><button class="btn" id="wishSubmit" type="submit">Kirim Ucapan</button><div aria-live="polite" class="status" id="wishStatus" role="status"></div></form>
+</div></div></div><div class="container" style="margin-top:22px"><div class="card">
+<h3>Ucapan dari Tamu</h3>
+<p class="small-note">Ucapan terbaru akan muncul di sini setelah berhasil disimpan.</p>
+<div aria-live="polite" id="wishesList">Memuat ucapan…</div>
+</div></div></section></main>
+<footer><div class="eyebrow">Terima Kasih</div><h2>Jindan &amp; Imas</h2><p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br/>apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p><p>Wassalamu’alaikum warahmatullahi wabarakatuh.</p></footer>
+
+
+
 <script>
 // ===== PENGATURAN OPSIONAL: GANTI HANYA JIKA URL SUDAH DIMILIKI =====
 // Masukkan URL file musik yang legal untuk digunakan, misalnya file MP3 yang Anda unggah sendiri.
